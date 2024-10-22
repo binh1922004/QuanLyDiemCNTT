@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dao\My_DB.cs" />
+    <Compile Include="entity\SinhVien.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,11 +56,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="view\ChiTietDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ChiTietDiem.Designer.cs">
+      <DependentUpon>ChiTietDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\MenuBase.Designer.cs">
       <DependentUpon>MenuBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\MenuChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MenuChinh.Designer.cs">
+      <DependentUpon>MenuChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ThongTinSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ThongTinSinhVien.Designer.cs">
+      <DependentUpon>ThongTinSinhVien.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -69,8 +89,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="view\ChiTietDiem.resx">
+      <DependentUpon>ChiTietDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\MenuBase.resx">
       <DependentUpon>MenuBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\MenuChinh.resx">
+      <DependentUpon>MenuChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ThongTinSinhVien.resx">
+      <DependentUpon>ThongTinSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -85,5 +114,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
