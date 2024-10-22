@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyDiemCNTT.View
+namespace QuanLyDiemCNTT.view
 {
     public partial class MenuBase : Form
     {
@@ -36,12 +36,6 @@ namespace QuanLyDiemCNTT.View
             pnl_Form.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-        }
-
-        private void btn_2_Click(object sender, EventArgs e)
-        {
-            openChildForm(new Form());
-
         }
     }
 }
