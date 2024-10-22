@@ -37,5 +37,11 @@ namespace QuanLyDiemCNTT.View
             childForm.BringToFront();
             childForm.Show();
         }
+
+        private void btn_2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Form());
+
+        }
     }
 }
