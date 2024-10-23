@@ -46,6 +46,7 @@
             this.dgv_lop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_lop.Size = new System.Drawing.Size(904, 387);
             this.dgv_lop.TabIndex = 0;
+            this.dgv_lop.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_lop_CellClick);
             // 
             // lbl_MaMon
             // 

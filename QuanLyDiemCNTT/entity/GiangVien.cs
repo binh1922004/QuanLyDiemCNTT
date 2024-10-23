@@ -13,22 +13,6 @@ namespace QuanLyDiemCNTT.entity
     {
         My_DB db = new My_DB();
 
-        private string maGV;
-        private string ho;
-        private string tenLot;
-        private string ten;
-        private DateTime ngaySinh;
-        private string email;
-        private string maBM;
-
-        public string MaGV { get => maGV; set => maGV = value; }
-        public string Ho { get => ho; set => ho = value; }
-        public string TenLot { get => tenLot; set => tenLot = value; }
-        public string Ten { get => ten; set => ten = value; }
-        public DateTime NgaySinh { get => ngaySinh; set => ngaySinh = value; }
-        public string Email { get => email; set => email = value; }
-        public string MaBM { get => maBM; set => maBM = value; }
-
 
         public DataTable getInfo(String maGV)
         {
@@ -44,29 +28,72 @@ namespace QuanLyDiemCNTT.entity
 
         public DataTable getDSMon(String maGV, int hocKy)
         {
+            db.openConnection();
             SqlCommand sqlCmd = new SqlCommand("SELECT * FROM dbo.GetDistinctCoursesByLecturer(@MAGV, @HK)", db.getConnection);
             sqlCmd.Parameters.Add(new SqlParameter("@MAGV", SqlDbType.VarChar)).Value = maGV;
             sqlCmd.Parameters.Add(new SqlParameter("@HK", SqlDbType.Int)).Value = hocKy;
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            db.openConnection();
+            db.closeConnection();
 
             return dt;
         }
 
         public DataTable getDSLop(String maMon, String maGV, int hocKy)
         {
-            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM GetHocPhanByHocKy(@MAMH, @MAGV, @HK)", db.getConnection);
+            db.openConnection();
+            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM dbo.GetHocPhanByHocKy(@MAMH, @MAGV, @HK)", db.getConnection);
             sqlCmd.Parameters.Add(new SqlParameter("@MAGV", SqlDbType.VarChar)).Value = maGV;
             sqlCmd.Parameters.Add(new SqlParameter("@MAMH", SqlDbType.VarChar)).Value = maMon;
             sqlCmd.Parameters.Add(new SqlParameter("@HK", SqlDbType.Int)).Value = hocKy;
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            db.openConnection();
+            db.closeConnection();
 
             return dt;
+        }
+
+
+        public DataTable getDiem(String maHP)
+        {
+            db.openConnection();
+            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM dbo.GetDiem(@MAHP)", db.getConnection);
+            sqlCmd.Parameters.Add(new SqlParameter("@MAHP", SqlDbType.VarChar)).Value = maHP;
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            db.closeConnection();
+            return dt;
+        }
+
+        public bool updateDiem(string maHP, string maSV, float diemQT, float diemKT)
+        {
+            db.openConnection();
+            SqlCommand sqlCmd = new SqlCommand("UpdateDiem", db.getConnection);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.Parameters.Add("@MaHP", SqlDbType.VarChar).Value = maHP;
+            sqlCmd.Parameters.Add("@MaSV", SqlDbType.VarChar).Value = maSV;
+            sqlCmd.Parameters.Add("@DiemQT", SqlDbType.Float).Value = diemQT;
+            sqlCmd.Parameters.Add("@DiemKT", SqlDbType.Float).Value = diemKT;
+            return sqlCmd.ExecuteNonQuery() > 0;
+        }
+
+        public bool updateThongTin(string maGV, string ho, string tenLot, string ten, DateTime ngaySinh, string email)
+        {
+            db.openConnection();
+            SqlCommand sqlCmd = new SqlCommand("UpdateGiangVien", db.getConnection);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            sqlCmd.Parameters.Add("@maGV", SqlDbType.VarChar).Value = maGV;
+            sqlCmd.Parameters.Add("@ho", SqlDbType.VarChar).Value = ho;
+            sqlCmd.Parameters.Add("@tenLot", SqlDbType.VarChar).Value = tenLot;
+            sqlCmd.Parameters.Add("@ten", SqlDbType.VarChar).Value = ten;
+            sqlCmd.Parameters.Add("@ngaySinh", SqlDbType.Date).Value = ngaySinh;
+            sqlCmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+
+            return sqlCmd.ExecuteNonQuery() > 0;
         }
     }
 }

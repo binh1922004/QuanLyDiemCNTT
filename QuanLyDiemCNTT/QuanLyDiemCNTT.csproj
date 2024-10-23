@@ -75,6 +75,12 @@
     <Compile Include="view\DanhSachMonFromGV.Designer.cs">
       <DependentUpon>DanhSachMonFromGV.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\DanhSachSinhVienTheoLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachSinhVienTheoLop.Designer.cs">
+      <DependentUpon>DanhSachSinhVienTheoLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\DanhSachMonFromGV.resx">
       <DependentUpon>DanhSachMonFromGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachSinhVienTheoLop.resx">
+      <DependentUpon>DanhSachSinhVienTheoLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MenuBase.resx">
       <DependentUpon>MenuBase.cs</DependentUpon>

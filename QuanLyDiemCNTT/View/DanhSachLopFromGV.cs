@@ -43,5 +43,14 @@ namespace QuanLyDiemCNTT.view
             dgv_lop.DataSource = giangVien.getDSLop(maMon, "GV001", hocKy);
             dgv_lop.Columns[dgv_lop.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void dgv_lop_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index < 0)
+                return;
+            DanhSachSinhVienTheoLop form = new DanhSachSinhVienTheoLop(dgv_lop.Rows[index].Cells["MaHP"].Value.ToString());
+            form.ShowDialog();
+        }
     }
 }

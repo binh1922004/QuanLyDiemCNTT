@@ -35,5 +35,30 @@ namespace QuanLyDiemCNTT.view
                 dtpk_ngaySinh.Value = (DateTime)dt.Rows[0]["NgaySinh"];
             }
         }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string maGV = txt_maGV.Text;
+                string ho = txt_ho.Text;
+                string tenLot = txt_tenLot.Text;
+                string ten = txt_ten.Text;
+                DateTime ngaySinh = dtpk_ngaySinh.Value.Date;
+                string email = txt_email.Text;
+                if (giangVien.updateThongTin(maGV, ho, tenLot, ten, ngaySinh, email))
+                {
+                    MessageBox.Show("Đã cập nhật thông tin thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Đã có lỗi");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
