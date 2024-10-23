@@ -179,6 +179,7 @@
             this.btn_update.TabIndex = 2;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = false;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // dtpk_ngaySinh
             // 

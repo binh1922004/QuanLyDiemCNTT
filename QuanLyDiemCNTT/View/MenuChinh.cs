@@ -13,6 +13,8 @@ namespace QuanLyDiemCNTT.view
         SinhVien sinhVien = new SinhVien();
         private Form activeForm;
         private DataGridView dgv;
+
+        string MaSV = "SV001";
         public MenuChinh()
         {
             InitializeComponent();
@@ -24,8 +26,26 @@ namespace QuanLyDiemCNTT.view
         {
             dgv = new DataGridView(); // Khởi tạo DataGridView mỗi lần
             dgv.Dock = DockStyle.Fill;
+
+            // tắt cột đầu
+            dgv.RowHeadersVisible = false;
+
+            // tắt dòng cuối
+            dgv.AllowUserToAddRows = false;
+
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Không cho phép người dùng điều chỉnh độ rộng các cột
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                col.Resizable = DataGridViewTriState.False;
+            }
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                row.Resizable = DataGridViewTriState.False;
+            }
             // Gán sự kiện CellClick ở đây
             dgv.CellClick += dgv_CellClick;
         }
@@ -38,10 +58,9 @@ namespace QuanLyDiemCNTT.view
             {
                 // Lấy mã học phần từ dòng đã nhấp
                 string maHP = dgv.Rows[e.RowIndex].Cells["MaHP"].Value.ToString();
-                string maSV = dgv.Rows[e.RowIndex].Cells["MaSV"].Value.ToString();
 
                 // Gọi một hàm khác để lấy điểm QT và KT của học phần này
-                sinhVien.ShowDetailedScores(maSV, maHP);
+                sinhVien.ShowDetailedScores(MaSV, maHP);
             }
             
         }
@@ -64,7 +83,7 @@ namespace QuanLyDiemCNTT.view
         {
             
             // Lấy thông tin sinh viên (giả định phương thức này trả về tất cả thông tin)
-            var (mssv, ho, tenlot, ten, diaChi, queQuan, ngaySinh, email, isMale) = sinhVien.showInforSinhVien("SV001");
+            var (mssv, ho, tenlot, ten, diaChi, queQuan, ngaySinh, email, isMale) = sinhVien.showInforSinhVien(MaSV);
 
             // Kiểm tra nếu thông tin hợp lệ trước khi mở form
             if (mssv != null)
@@ -84,12 +103,14 @@ namespace QuanLyDiemCNTT.view
         private void btn_xemDiem_Click(object sender, EventArgs e)
         {
             Form main = new Form();
-            DataTable dt = sinhVien.showDiemSinhVien("SV001");
+            DataTable dt = sinhVien.showDiemSinhVien(MaSV);
 
             openChildForm(main);
 
             initDataGridView();
+
             dgv.DataSource = dt;
+
             main.Controls.Add(dgv);
         }
     }

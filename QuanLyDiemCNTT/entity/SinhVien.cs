@@ -29,18 +29,33 @@ namespace QuanLyDiemCNTT.entity
         private string email;
         private string gioiTinh;
 
-        //public SinhVien(string mssv, string ho, string tenLot, string ten, string diaChi, string queQuan, DateTime ngaySinh, string email, string gioiTinh)
-        //{
-        //    this.mssv = mssv;
-        //    this.ho = ho;
-        //    this.tenLot = tenLot;
-        //    this.ten = ten;
-        //    this.diaChi = diaChi;
-        //    this.queQuan = queQuan;
-        //    this.ngaySinh = ngaySinh;
-        //    this.email = email;
-        //    this.gioiTinh = gioiTinh;
-        //}
+        public string Mssv { get => mssv; set => mssv = value; }
+        public string Ho { get => ho; set => ho = value; }
+        public string TenLot { get => tenLot; set => tenLot = value; }
+        public string Ten { get => ten; set => ten = value; }
+        public string DiaChi { get => diaChi; set => diaChi = value; }
+        public string QueQuan { get => queQuan; set => queQuan = value; }
+        public DateTime NgaySinh { get => ngaySinh; set => ngaySinh = value; }
+        public string Email { get => email; set => email = value; }
+        public string GioiTinh { get => gioiTinh; set => gioiTinh = value; }
+
+        public SinhVien(string mssv, string ho, string tenLot, string ten, string diaChi, string queQuan, DateTime ngaySinh, string email, string gioiTinh)
+        {
+            this.Mssv = mssv;
+            this.Ho = ho;
+            this.TenLot = tenLot;
+            this.Ten = ten;
+            this.DiaChi = diaChi;
+            this.QueQuan = queQuan;
+            this.NgaySinh = ngaySinh;
+            this.Email = email;
+            this.GioiTinh = gioiTinh;
+        }
+
+        public SinhVien()
+        {
+
+        }
 
         //    public (string, string , string, string, string, string, DateTime, string, bool) showInforSinhVien(string mssv)
         //    {
@@ -112,13 +127,12 @@ namespace QuanLyDiemCNTT.entity
                 "hp.NamHoc, " +
                 "hp.MaHP, " +
                 "hp.TenHP, " +
-                "AVG(bd.DiemQT + bd.DiemKT) / 2 AS DiemTB, " +  // Tính điểm trung bình
-                "dk.MaSV " +  // Thêm MaSV để có thể sử dụng sau này
+                "AVG(bd.DiemQT + bd.DiemKT) / 2 AS DiemTB " +  // Tính điểm trung bình
                 "FROM DangKy dk " +
                 "JOIN HocPhan hp ON dk.MaHP = hp.MaHP " +
                 "JOIN BangDiem bd ON dk.MaHP = bd.MaHP AND dk.MaSV = bd.MaSV " +
                 "WHERE dk.MaSV = @mssv " +
-                "GROUP BY hp.HocKy, hp.NamHoc, hp.MaHP, hp.TenHP, dk.MaSV"; // Nhóm theo các cột không tính tổng
+                "GROUP BY hp.HocKy, hp.NamHoc, hp.MaHP, hp.TenHP"; 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
             cmd.Parameters.AddWithValue("@mssv", mssv);
@@ -162,7 +176,7 @@ namespace QuanLyDiemCNTT.entity
 
                 // Tạo và hiển thị form chi tiết điểm với tên học phần
                 ChiTietDiem formChiTietDiem = new ChiTietDiem(tenHP, diemQT, diemKT);
-                formChiTietDiem.ShowDialog(); // Hiển thị dialog
+                formChiTietDiem.ShowDialog();
             }
             else
             {
@@ -170,6 +184,40 @@ namespace QuanLyDiemCNTT.entity
             }
 
             db.closeConnection();
+        }
+
+        // update thong tin sinh vien
+        public bool updateInforSinhVien(SinhVien sv)
+        {
+            string query = "UPDATE SinhVien SET Ho = @ho, TenLot = @tenLot, Ten = @ten, " +
+                        "DiaChi = @diaChi, QueQuan = @queQuan, NgaySinh = @ngaySinh, Email = @email, GioiTinh = @gioiTinh " +
+                        "WHERE MaSV = @mssv";
+
+            db.openConnection();
+            SqlCommand cmd = new SqlCommand(query, db.getConnection);
+
+            cmd.Parameters.Add("@mssv", SqlDbType.VarChar).Value = sv.Mssv;
+            cmd.Parameters.Add("@ho", SqlDbType.NVarChar).Value = sv.Ho;
+            cmd.Parameters.Add("@tenLot", SqlDbType.NVarChar).Value = sv.TenLot;
+            cmd.Parameters.Add("@ten", SqlDbType.NVarChar).Value = sv.Ten;
+            cmd.Parameters.Add("@diaChi", SqlDbType.NVarChar).Value = sv.DiaChi;
+            cmd.Parameters.Add("@queQuan", SqlDbType.NVarChar).Value = sv.QueQuan;
+            cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = sv.NgaySinh;
+            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = sv.Email;
+            cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = sv.GioiTinh;
+
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                db.closeConnection();
+                return true;
+            }
+            else
+            {
+                db.closeConnection();
+                return false;
+            }
+                
+            
         }
 
     }
