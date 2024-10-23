@@ -57,66 +57,10 @@ namespace QuanLyDiemCNTT.entity
 
         }
 
-        //    public (string, string , string, string, string, string, DateTime, string, bool) showInforSinhVien(string mssv)
-        //    {
-        //        string query = "SELECT MaSV, Ho, TenLot, Ten, DiaChi, QueQuan, NgaySinh, Email, GioiTinh " +
-        //                        "FROM SinhVien WHERE MaSV = @mssv";
-
-        //        db.openConnection();
-        //        SqlCommand cmd = new SqlCommand(query, db.getConnection);
-        //        cmd.Parameters.AddWithValue("@mssv", mssv);
-
-        //        SqlDataReader reader = cmd.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            mssv = reader[0].ToString();
-        //            string ho = reader[1].ToString();
-        //            string tenLot = reader[2].ToString();
-        //            string ten = reader[3].ToString();
-        //            string diaChi = reader[4].ToString();
-        //            string queQuan = reader[5].ToString();
-        //            DateTime ngaySinh = reader["NgaySinh"] != DBNull.Value
-        //? Convert.ToDateTime(reader["NgaySinh"])
-        //: DateTime.Today;  // Giá trị mặc định nếu ngày sinh null
-        //            string email = reader[7].ToString();
-        //            string gioiTinh = reader[8].ToString();
-
-        //        }
-        //        bool isMale = (gioiTinh == "Nam") ? true : false;
-        //        db.closeConnection();
-        //        return(mssv, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, isMale);
-        //    }
+        
 
         public DataTable getInforSinhVien(string mssv)
         {
-            //string query = "proc_showThongTinSV";
-
-            //db.openConnection();
-            //SqlCommand cmd = new SqlCommand(query, db.getConnection);
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@mssv", mssv);
-
-            //SqlDataReader reader = cmd.ExecuteReader();
-
-            //if (reader.Read())
-            //{
-            //    mssv = reader["MaSV"].ToString();
-            //    string ho = reader["Ho"].ToString();
-            //    string tenLot = reader["TenLot"].ToString();
-            //    string ten = reader["Ten"].ToString();
-            //    string diaChi = reader["DiaChi"].ToString();
-            //    string queQuan = reader["QueQuan"].ToString();
-            //    DateTime ngaySinh = Convert.ToDateTime(reader["NgaySinh"]);
-            //    string email = reader["Email"].ToString();
-            //    bool isMale = reader["GioiTinh"].ToString() == "Nam"; // Kiểm tra giới tính
-
-            //    db.closeConnection();
-            //    return (mssv, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, isMale);
-            //}
-
-            //db.closeConnection();
-            //return (null, null, null, null, null, null, DateTime.MinValue, null, false); // Trả về giá trị mặc định nếu không tìm thấy
-
             string query = "proc_showThongTinSV";
 
             db.openConnection();
@@ -131,8 +75,6 @@ namespace QuanLyDiemCNTT.entity
 
             db.closeConnection();
             return dt;
-
-
         }
 
 
@@ -208,9 +150,12 @@ namespace QuanLyDiemCNTT.entity
             {
                 db.closeConnection();
                 return false;
-            }
-                
-            
+            }             
+        }
+
+        public void dangKyMonHoc(string mssv)
+        {
+
         }
 
     }

@@ -136,5 +136,10 @@ namespace QuanLyDiemCNTT.view
 
             main.Controls.Add(dgv);
         }
+
+        private void btn_dangKyMH_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DanhSachDKMH());
+        }
     }
 }

@@ -32,11 +32,13 @@
             this.btn_xemDiem = new System.Windows.Forms.Button();
             this.btn_xemThongTin = new System.Windows.Forms.Button();
             this.pnl_Form = new System.Windows.Forms.Panel();
+            this.btn_dangKyMH = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_Menu
             // 
+            this.pnl_Menu.Controls.Add(this.btn_dangKyMH);
             this.pnl_Menu.Controls.Add(this.btn_xemDiem);
             this.pnl_Menu.Controls.Add(this.btn_xemThongTin);
             this.pnl_Menu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -79,6 +81,18 @@
             this.pnl_Form.Size = new System.Drawing.Size(944, 628);
             this.pnl_Form.TabIndex = 4;
             // 
+            // btn_dangKyMH
+            // 
+            this.btn_dangKyMH.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_dangKyMH.Location = new System.Drawing.Point(0, 138);
+            this.btn_dangKyMH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_dangKyMH.Name = "btn_dangKyMH";
+            this.btn_dangKyMH.Size = new System.Drawing.Size(234, 69);
+            this.btn_dangKyMH.TabIndex = 2;
+            this.btn_dangKyMH.Text = "Đăng ký môn học";
+            this.btn_dangKyMH.UseVisualStyleBackColor = true;
+            this.btn_dangKyMH.Click += new System.EventHandler(this.btn_dangKyMH_Click);
+            // 
             // MenuChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -102,5 +116,6 @@
         private System.Windows.Forms.Button btn_xemDiem;
         private System.Windows.Forms.Button btn_xemThongTin;
         private System.Windows.Forms.Panel pnl_Form;
+        private System.Windows.Forms.Button btn_dangKyMH;
     }
 }

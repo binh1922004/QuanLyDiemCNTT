@@ -62,6 +62,12 @@
     <Compile Include="view\ChiTietDiem.Designer.cs">
       <DependentUpon>ChiTietDiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\DanhSachDKMH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachDKMH.Designer.cs">
+      <DependentUpon>DanhSachDKMH.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="view\ChiTietDiem.resx">
       <DependentUpon>ChiTietDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachDKMH.resx">
+      <DependentUpon>DanhSachDKMH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MenuBase.resx">
       <DependentUpon>MenuBase.cs</DependentUpon>
