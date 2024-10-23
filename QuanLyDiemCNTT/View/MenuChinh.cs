@@ -96,31 +96,8 @@ namespace QuanLyDiemCNTT.view
 
         private void btn_xemThongTin_Click(object sender, EventArgs e)
         {
-            
-            // Lấy thông tin sinh viên
-            DataTable dt = sinhVien.getInforSinhVien(MaSV);
-
-            string ho = dt.Rows[0]["Ho"].ToString();
-            string tenLot = dt.Rows[0]["TenLot"].ToString();
-            string ten = dt.Rows[0]["Ten"].ToString();
-            string diaChi = dt.Rows[0]["DiaChi"].ToString();
-            string queQuan = dt.Rows[0]["QueQuan"].ToString();
-            DateTime ngaySinh = Convert.ToDateTime(dt.Rows[0]["NgaySinh"]);
-            string email = dt.Rows[0]["Email"].ToString();
-            string gioiTinh = dt.Rows[0]["GioiTinh"].ToString();
-
-            // Kiểm tra thông tin hợp lệ trước khi mở form
-            if (MaSV != null)
-            {
-                // Tạo form ThongTinSinhVien với dữ liệu đã lấy
-                ThongTinSinhVien formThongTin = new ThongTinSinhVien(MaSV, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, gioiTinh);
-
-                openChildForm(formThongTin);
-            }
-            else
-            {
-                MessageBox.Show("Mssv không hợp lệ", "Thông báo");
-            }
+            openChildForm(new ThongTinSinhVien());
+           
         }
 
         private void btn_xemDiem_Click(object sender, EventArgs e)
