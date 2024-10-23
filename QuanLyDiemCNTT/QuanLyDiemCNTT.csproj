@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dao\My_DB.cs" />
+    <Compile Include="entity\GiangVien.cs" />
     <Compile Include="entity\SinhVien.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,6 +81,24 @@
     <Compile Include="view\DanhSachDKMH.Designer.cs">
       <DependentUpon>DanhSachDKMH.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\DanhSachLopFromGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachLopFromGV.Designer.cs">
+      <DependentUpon>DanhSachLopFromGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\DanhSachMonFromGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachMonFromGV.Designer.cs">
+      <DependentUpon>DanhSachMonFromGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\DanhSachSinhVienTheoLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachSinhVienTheoLop.Designer.cs">
+      <DependentUpon>DanhSachSinhVienTheoLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +110,18 @@
     </Compile>
     <Compile Include="view\MenuChinh.Designer.cs">
       <DependentUpon>MenuChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\MenuGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MenuGV.Designer.cs">
+      <DependentUpon>MenuGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ThongTinGiangVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ThongTinGiangVien.Designer.cs">
+      <DependentUpon>ThongTinGiangVien.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ThongTinSinhVien.cs">
       <SubType>Form</SubType>
@@ -119,11 +150,26 @@
     <EmbeddedResource Include="view\DanhSachDKMH.resx">
       <DependentUpon>DanhSachDKMH.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachLopFromGV.resx">
+      <DependentUpon>DanhSachLopFromGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachMonFromGV.resx">
+      <DependentUpon>DanhSachMonFromGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachSinhVienTheoLop.resx">
+      <DependentUpon>DanhSachSinhVienTheoLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\MenuBase.resx">
       <DependentUpon>MenuBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MenuChinh.resx">
       <DependentUpon>MenuChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\MenuGV.resx">
+      <DependentUpon>MenuGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ThongTinGiangVien.resx">
+      <DependentUpon>ThongTinGiangVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ThongTinSinhVien.resx">
       <DependentUpon>ThongTinSinhVien.cs</DependentUpon>

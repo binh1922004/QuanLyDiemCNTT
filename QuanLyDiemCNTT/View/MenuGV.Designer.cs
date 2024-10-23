@@ -1,6 +1,6 @@
 ﻿namespace QuanLyDiemCNTT.view
 {
-    partial class MenuBase
+    partial class MenuGV
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,8 @@
         {
             this.pnl_Form = new System.Windows.Forms.Panel();
             this.pnl_Menu = new System.Windows.Forms.Panel();
-            this.btn_2 = new System.Windows.Forms.Button();
-            this.btn_1 = new System.Windows.Forms.Button();
+            this.btn_MH = new System.Windows.Forms.Button();
+            this.btn_Info = new System.Windows.Forms.Button();
             this.pnl_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,52 +40,50 @@
             this.pnl_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Form.Location = new System.Drawing.Point(156, 0);
             this.pnl_Form.Name = "pnl_Form";
-            this.pnl_Form.Size = new System.Drawing.Size(644, 450);
-            this.pnl_Form.TabIndex = 3;
-            this.pnl_Form.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Form_Paint);
+            this.pnl_Form.Size = new System.Drawing.Size(824, 630);
+            this.pnl_Form.TabIndex = 5;
             // 
             // pnl_Menu
             // 
-            this.pnl_Menu.Controls.Add(this.btn_2);
-            this.pnl_Menu.Controls.Add(this.btn_1);
+            this.pnl_Menu.Controls.Add(this.btn_MH);
+            this.pnl_Menu.Controls.Add(this.btn_Info);
             this.pnl_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_Menu.Location = new System.Drawing.Point(0, 0);
             this.pnl_Menu.Name = "pnl_Menu";
-            this.pnl_Menu.Size = new System.Drawing.Size(156, 450);
-            this.pnl_Menu.TabIndex = 2;
-            this.pnl_Menu.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Menu_Paint);
+            this.pnl_Menu.Size = new System.Drawing.Size(156, 630);
+            this.pnl_Menu.TabIndex = 4;
             // 
-            // btn_2
+            // btn_MH
             // 
-            this.btn_2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_2.Location = new System.Drawing.Point(0, 44);
-            this.btn_2.Name = "btn_2";
-            this.btn_2.Size = new System.Drawing.Size(156, 44);
-            this.btn_2.TabIndex = 1;
-            this.btn_2.Text = "Chức năng 2";
-            this.btn_2.UseVisualStyleBackColor = true;
-            this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
+            this.btn_MH.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_MH.Location = new System.Drawing.Point(0, 44);
+            this.btn_MH.Name = "btn_MH";
+            this.btn_MH.Size = new System.Drawing.Size(156, 44);
+            this.btn_MH.TabIndex = 1;
+            this.btn_MH.Text = "Danh sách môn";
+            this.btn_MH.UseVisualStyleBackColor = true;
+            this.btn_MH.Click += new System.EventHandler(this.btn_MH_Click);
             // 
-            // btn_1
+            // btn_Info
             // 
-            this.btn_1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_1.Location = new System.Drawing.Point(0, 0);
-            this.btn_1.Name = "btn_1";
-            this.btn_1.Size = new System.Drawing.Size(156, 44);
-            this.btn_1.TabIndex = 0;
-            this.btn_1.Text = "Chức năng 1";
-            this.btn_1.UseVisualStyleBackColor = true;
-            this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
+            this.btn_Info.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Info.Location = new System.Drawing.Point(0, 0);
+            this.btn_Info.Name = "btn_Info";
+            this.btn_Info.Size = new System.Drawing.Size(156, 44);
+            this.btn_Info.TabIndex = 0;
+            this.btn_Info.Text = "Xem thông tin";
+            this.btn_Info.UseVisualStyleBackColor = true;
+            this.btn_Info.Click += new System.EventHandler(this.btn_Info_Click);
             // 
-            // MenuBase
+            // MenuGV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(980, 630);
             this.Controls.Add(this.pnl_Form);
             this.Controls.Add(this.pnl_Menu);
-            this.Name = "MenuBase";
-            this.Text = "MenuBase";
+            this.Name = "MenuGV";
+            this.Text = "MenuGV";
             this.pnl_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -95,7 +93,7 @@
 
         private System.Windows.Forms.Panel pnl_Form;
         private System.Windows.Forms.Panel pnl_Menu;
-        private System.Windows.Forms.Button btn_2;
-        private System.Windows.Forms.Button btn_1;
+        private System.Windows.Forms.Button btn_MH;
+        private System.Windows.Forms.Button btn_Info;
     }
 }
