@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.group_Hk1 = new System.Windows.Forms.GroupBox();
-            this.group_Hk2 = new System.Windows.Forms.GroupBox();
             this.dgv_hk1 = new System.Windows.Forms.DataGridView();
-            this.dgv_hk2 = new System.Windows.Forms.DataGridView();
             this.MaMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.group_Hk2 = new System.Windows.Forms.GroupBox();
+            this.dgv_hk2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.group_Hk1.SuspendLayout();
-            this.group_Hk2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hk1)).BeginInit();
+            this.group_Hk2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hk2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,17 +53,6 @@
             this.group_Hk1.TabStop = false;
             this.group_Hk1.Text = "Học kỳ 1";
             // 
-            // group_Hk2
-            // 
-            this.group_Hk2.Controls.Add(this.dgv_hk2);
-            this.group_Hk2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.group_Hk2.Location = new System.Drawing.Point(0, 293);
-            this.group_Hk2.Name = "group_Hk2";
-            this.group_Hk2.Size = new System.Drawing.Size(560, 315);
-            this.group_Hk2.TabIndex = 1;
-            this.group_Hk2.TabStop = false;
-            this.group_Hk2.Text = "Học kỳ 2";
-            // 
             // dgv_hk1
             // 
             this.dgv_hk1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -73,26 +62,13 @@
             this.dgv_hk1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_hk1.Location = new System.Drawing.Point(3, 18);
             this.dgv_hk1.Name = "dgv_hk1";
+            this.dgv_hk1.ReadOnly = true;
             this.dgv_hk1.RowHeadersWidth = 51;
             this.dgv_hk1.RowTemplate.Height = 24;
             this.dgv_hk1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_hk1.Size = new System.Drawing.Size(554, 587);
             this.dgv_hk1.TabIndex = 0;
-            // 
-            // dgv_hk2
-            // 
-            this.dgv_hk2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_hk2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dgv_hk2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_hk2.Location = new System.Drawing.Point(3, 18);
-            this.dgv_hk2.Name = "dgv_hk2";
-            this.dgv_hk2.RowHeadersWidth = 51;
-            this.dgv_hk2.RowTemplate.Height = 24;
-            this.dgv_hk2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_hk2.Size = new System.Drawing.Size(554, 294);
-            this.dgv_hk2.TabIndex = 1;
+            this.dgv_hk1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_hk1_CellClick);
             // 
             // MaMon
             // 
@@ -110,6 +86,33 @@
             this.TenMon.HeaderText = "Tên môn học";
             this.TenMon.MinimumWidth = 6;
             this.TenMon.Name = "TenMon";
+            // 
+            // group_Hk2
+            // 
+            this.group_Hk2.Controls.Add(this.dgv_hk2);
+            this.group_Hk2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.group_Hk2.Location = new System.Drawing.Point(0, 293);
+            this.group_Hk2.Name = "group_Hk2";
+            this.group_Hk2.Size = new System.Drawing.Size(560, 315);
+            this.group_Hk2.TabIndex = 1;
+            this.group_Hk2.TabStop = false;
+            this.group_Hk2.Text = "Học kỳ 2";
+            // 
+            // dgv_hk2
+            // 
+            this.dgv_hk2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_hk2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgv_hk2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_hk2.Location = new System.Drawing.Point(3, 18);
+            this.dgv_hk2.Name = "dgv_hk2";
+            this.dgv_hk2.RowHeadersWidth = 51;
+            this.dgv_hk2.RowTemplate.Height = 24;
+            this.dgv_hk2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_hk2.Size = new System.Drawing.Size(554, 294);
+            this.dgv_hk2.TabIndex = 1;
+            this.dgv_hk2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_hk2_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -139,8 +142,8 @@
             this.Text = "DanhSachMonFromGV";
             this.Load += new System.EventHandler(this.DanhSachMonFromGV_Load);
             this.group_Hk1.ResumeLayout(false);
-            this.group_Hk2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hk1)).EndInit();
+            this.group_Hk2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hk2)).EndInit();
             this.ResumeLayout(false);
 

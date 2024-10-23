@@ -63,6 +63,12 @@
     <Compile Include="view\ChiTietDiem.Designer.cs">
       <DependentUpon>ChiTietDiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\DanhSachLopFromGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\DanhSachLopFromGV.Designer.cs">
+      <DependentUpon>DanhSachLopFromGV.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\DanhSachMonFromGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="view\ChiTietDiem.resx">
       <DependentUpon>ChiTietDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\DanhSachLopFromGV.resx">
+      <DependentUpon>DanhSachLopFromGV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\DanhSachMonFromGV.resx">
       <DependentUpon>DanhSachMonFromGV.cs</DependentUpon>

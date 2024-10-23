@@ -54,5 +54,19 @@ namespace QuanLyDiemCNTT.entity
 
             return dt;
         }
+
+        public DataTable getDSLop(String maMon, String maGV, int hocKy)
+        {
+            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM GetHocPhanByHocKy(@MAMH, @MAGV, @HK)", db.getConnection);
+            sqlCmd.Parameters.Add(new SqlParameter("@MAGV", SqlDbType.VarChar)).Value = maGV;
+            sqlCmd.Parameters.Add(new SqlParameter("@MAMH", SqlDbType.VarChar)).Value = maMon;
+            sqlCmd.Parameters.Add(new SqlParameter("@HK", SqlDbType.Int)).Value = hocKy;
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            db.openConnection();
+
+            return dt;
+        }
     }
 }
