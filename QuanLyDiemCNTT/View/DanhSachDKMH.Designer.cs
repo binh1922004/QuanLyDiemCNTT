@@ -37,10 +37,13 @@
             this.dgv_listDKMH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_listDKMH.Location = new System.Drawing.Point(29, 29);
             this.dgv_listDKMH.Name = "dgv_listDKMH";
+            this.dgv_listDKMH.ReadOnly = true;
             this.dgv_listDKMH.RowHeadersWidth = 51;
             this.dgv_listDKMH.RowTemplate.Height = 24;
+            this.dgv_listDKMH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_listDKMH.Size = new System.Drawing.Size(750, 420);
             this.dgv_listDKMH.TabIndex = 0;
+            this.dgv_listDKMH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listDKMH_CellContentClick);
             // 
             // DanhSachDKMH
             // 

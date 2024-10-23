@@ -81,7 +81,7 @@ namespace QuanLyDiemCNTT.entity
         // show điểm
         public DataTable getDiemSinhVien(string mssv, int hocky)
         {
-            string query = "proc_getDiemSV"; 
+            string query = "proc_showDiemSV"; 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -175,5 +175,83 @@ namespace QuanLyDiemCNTT.entity
 
         }
 
+        public DataTable getMonHoc()
+        {
+            string query = "proc_getMH";
+
+            db.openConnection();
+
+            SqlCommand cmd = new SqlCommand(query, db.getConnection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            db.closeConnection();
+
+            return dt;
+        }
+
+        public DataTable getDSHocPhan(string maMH, int hocKy = 2)
+        {
+            string query = "proc_getHP";
+
+            db.openConnection();
+
+            SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@MaMH", SqlDbType.VarChar).Value = maMH;
+            cmd.Parameters.Add("@HocKy", SqlDbType.Int).Value = hocKy;
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            db.closeConnection();
+
+            return dt;
+        }
+
+        public bool checkDaDangKy(string maHP, string maSV)
+        {
+            db.openConnection();
+            SqlCommand command = new SqlCommand("SELECT dbo.CheckDangKy(@MaHP, @MaSV)", db.getConnection);
+            command.Parameters.AddWithValue("@MaHP", maHP);
+            command.Parameters.AddWithValue("@MaSV", maSV);
+            bool result = (bool)command.ExecuteScalar();
+            db.closeConnection();
+            return result;
+        }
+
+
+        public void dangKyHP(string maHP, string maSV)
+        {
+            db.openConnection();
+            SqlCommand command = new SqlCommand("proc_insertDangKy", db.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@MaHP", SqlDbType.VarChar).Value = maHP;
+            command.Parameters.Add("@MaSV", SqlDbType.VarChar).Value = maSV;
+
+            command.ExecuteNonQuery();
+            db.closeConnection();
+        }
+
+        public void doiHP(string oldMaHP, string newMaHP, string maSV)
+        {
+            db.openConnection();
+            SqlCommand command = new SqlCommand("proc_updateDangKy", db.getConnection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@NewMaHP", newMaHP);
+            command.Parameters.AddWithValue("@OldMaHP", oldMaHP);
+            command.Parameters.AddWithValue("@MaSV", maSV);
+
+            command.ExecuteNonQuery();
+            db.closeConnection();
+        }
     }
 }
