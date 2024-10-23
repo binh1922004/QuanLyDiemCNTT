@@ -11,7 +11,8 @@ namespace QuanLyDiemCNTT.dao
     internal class My_DB
     {
         SqlConnection conn = null;
-        String connString = @"Data Source=NHAATJNGUYEEN;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
+        //String connString = @"Data Source=NHAATJNGUYEEN;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
+        String connString = @"Data Source=binh0109\SQLEXPRESS;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
 
         public My_DB() 
         {

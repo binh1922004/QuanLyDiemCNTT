@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace QuanLyDiemCNTT.view
 {
-    public partial class MenuBase : Form
+    public partial class MenuGV : Form
     {
-        public MenuBase()
+        public MenuGV()
         {
             InitializeComponent();
         }
 
         private Form activeForm;
-        private void btn_1_Click(object sender, EventArgs e)
-        {
-            //thay Form = Form đang cần hiện lên.
-            openChildForm(new Form());
-        }
 
         private void openChildForm(Form childForm)
         {
@@ -37,19 +32,9 @@ namespace QuanLyDiemCNTT.view
             childForm.BringToFront();
             childForm.Show();
         }
-
-        private void pnl_Menu_Paint(object sender, PaintEventArgs e)
+        private void btn_Info_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnl_Form_Paint(object sender, PaintEventArgs e)
-        {
+            openChildForm(new ThongTinGiangVien());
 
         }
     }

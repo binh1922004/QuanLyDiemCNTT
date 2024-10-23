@@ -19,15 +19,15 @@ namespace QuanLyDiemCNTT.entity
     {
         My_DB db = new My_DB();
 
-        private string mssv;
-        private string ho;
-        private string tenLot;
-        private string ten;
-        private string diaChi;
-        private string queQuan;
-        private DateTime ngaySinh;
-        private string email;
-        private string gioiTinh;
+            private string mssv;
+            private string ho;
+            private string tenLot;
+            private string ten;
+            private string diaChi;
+            private string queQuan;
+            private DateTime ngaySinh;
+            private string email;
+            private string gioiTinh;
 
         public string Mssv { get => mssv; set => mssv = value; }
         public string Ho { get => ho; set => ho = value; }
