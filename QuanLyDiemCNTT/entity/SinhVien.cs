@@ -87,8 +87,36 @@ namespace QuanLyDiemCNTT.entity
         //        return(mssv, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, isMale);
         //    }
 
-        public (string, string, string, string, string, string, DateTime, string, bool) showInforSinhVien(string mssv)
+        public DataTable getInforSinhVien(string mssv)
         {
+            //string query = "proc_showThongTinSV";
+
+            //db.openConnection();
+            //SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@mssv", mssv);
+
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //if (reader.Read())
+            //{
+            //    mssv = reader["MaSV"].ToString();
+            //    string ho = reader["Ho"].ToString();
+            //    string tenLot = reader["TenLot"].ToString();
+            //    string ten = reader["Ten"].ToString();
+            //    string diaChi = reader["DiaChi"].ToString();
+            //    string queQuan = reader["QueQuan"].ToString();
+            //    DateTime ngaySinh = Convert.ToDateTime(reader["NgaySinh"]);
+            //    string email = reader["Email"].ToString();
+            //    bool isMale = reader["GioiTinh"].ToString() == "Nam"; // Kiểm tra giới tính
+
+            //    db.closeConnection();
+            //    return (mssv, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, isMale);
+            //}
+
+            //db.closeConnection();
+            //return (null, null, null, null, null, null, DateTime.MinValue, null, false); // Trả về giá trị mặc định nếu không tìm thấy
+
             string query = "proc_showThongTinSV";
 
             db.openConnection();
@@ -96,31 +124,20 @@ namespace QuanLyDiemCNTT.entity
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mssv", mssv);
 
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                mssv = reader["MaSV"].ToString();
-                string ho = reader["Ho"].ToString();
-                string tenLot = reader["TenLot"].ToString();
-                string ten = reader["Ten"].ToString();
-                string diaChi = reader["DiaChi"].ToString();
-                string queQuan = reader["QueQuan"].ToString();
-                DateTime ngaySinh = Convert.ToDateTime(reader["NgaySinh"]);
-                string email = reader["Email"].ToString();
-                bool isMale = reader["GioiTinh"].ToString() == "Nam"; // Kiểm tra giới tính
-
-                db.closeConnection();
-                return (mssv, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, isMale);
-            }
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            
+            adapter.Fill(dt);
 
             db.closeConnection();
-            return (null, null, null, null, null, null, DateTime.MinValue, null, false); // Trả về giá trị mặc định nếu không tìm thấy
+            return dt;
+
+
         }
 
 
         // show điểm
-        public DataTable showDiemSinhVien(string mssv)
+        public DataTable getDiemSinhVien(string mssv)
         {
             string query = "proc_showDiemSV"; 
             db.openConnection();
@@ -144,7 +161,7 @@ namespace QuanLyDiemCNTT.entity
         }
 
         // show điểm chi tiết(QT, KT)
-        public void ShowDetailedScores(string maSV, string maHP)
+        public DataTable getChiTietDiem(string maSV, string maHP)
         {
             // truy vấn lấy điểm QT, KT và tên học phần
             string query = "proc_showDiemChiTiet";
@@ -155,24 +172,12 @@ namespace QuanLyDiemCNTT.entity
             cmd.Parameters.AddWithValue("@MaSV", maSV);
             cmd.Parameters.AddWithValue("@MaHP", maHP);
 
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                string tenHP = reader.GetString(0); // Lấy tên học phần
-                double diemQT = reader.GetDouble(1); // Lấy điểm QT
-                double diemKT = reader.GetDouble(2); // Lấy điểm KT
-
-                // Tạo và hiển thị form chi tiết điểm với tên học phần
-                ChiTietDiem formChiTietDiem = new ChiTietDiem(tenHP, diemQT, diemKT);
-                formChiTietDiem.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy điểm chi tiết!", "Thông báo");
-            }
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
 
             db.closeConnection();
+            return dt;
         }
 
         // update thong tin sinh vien

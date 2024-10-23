@@ -13,7 +13,7 @@ namespace QuanLyDiemCNTT.view
 {
     public partial class ThongTinSinhVien : Form
     {
-        public ThongTinSinhVien(string mssv, string ho, string tenLot, string ten, string diaChi, string queQuan, DateTime ngaySinh, string email, bool isMale)
+        public ThongTinSinhVien(string mssv, string ho, string tenLot, string ten, string diaChi, string queQuan, DateTime ngaySinh, string email, string gioiTinh)
         {
             InitializeComponent();
 
@@ -36,7 +36,7 @@ namespace QuanLyDiemCNTT.view
             txt_email.Text = email;
 
             // Gán trạng thái cho RadioButton
-            if (isMale)
+            if (gioiTinh.Equals("Nam"))
                 rad_nam.Checked = true;
             else
                 rad_nu.Checked = true;

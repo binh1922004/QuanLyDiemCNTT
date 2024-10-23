@@ -10,7 +10,10 @@ namespace QuanLyDiemCNTT.view
     public partial class MenuChinh : Form
     {
         My_DB db = new My_DB();
+
+        // lấy tất cả các hàm trong class sinh viên
         SinhVien sinhVien = new SinhVien();
+
         private Form activeForm;
         private DataGridView dgv;
 
@@ -59,8 +62,20 @@ namespace QuanLyDiemCNTT.view
                 // Lấy mã học phần từ dòng đã nhấp
                 string maHP = dgv.Rows[e.RowIndex].Cells["MaHP"].Value.ToString();
 
-                // Gọi một hàm khác để lấy điểm QT và KT của học phần này
-                sinhVien.ShowDetailedScores(MaSV, maHP);
+                // Gọi hàm để lấy điểm QT và KT của học phần này
+                DataTable dt =  sinhVien.getChiTietDiem(MaSV, maHP);
+
+                string tenHP = dt.Rows[0]["TenHP"].ToString();
+                double diemQT = Convert.ToDouble(dt.Rows[0]["DiemQT"]);
+                double diemKT = Convert.ToDouble(dt.Rows[0]["DiemKT"]);
+
+
+                // kiem tra thong tin truoc khi mở form
+                if (MaSV != null)
+                {
+                    ChiTietDiem chiTietDiem = new ChiTietDiem(tenHP, diemQT, diemKT);
+                    chiTietDiem.ShowDialog();
+                }
             }
             
         }
@@ -82,28 +97,36 @@ namespace QuanLyDiemCNTT.view
         private void btn_xemThongTin_Click(object sender, EventArgs e)
         {
             
-            // Lấy thông tin sinh viên (giả định phương thức này trả về tất cả thông tin)
-            var (mssv, ho, tenlot, ten, diaChi, queQuan, ngaySinh, email, isMale) = sinhVien.showInforSinhVien(MaSV);
+            // Lấy thông tin sinh viên
+            DataTable dt = sinhVien.getInforSinhVien(MaSV);
 
-            // Kiểm tra nếu thông tin hợp lệ trước khi mở form
-            if (mssv != null)
+            string ho = dt.Rows[0]["Ho"].ToString();
+            string tenLot = dt.Rows[0]["TenLot"].ToString();
+            string ten = dt.Rows[0]["Ten"].ToString();
+            string diaChi = dt.Rows[0]["DiaChi"].ToString();
+            string queQuan = dt.Rows[0]["QueQuan"].ToString();
+            DateTime ngaySinh = Convert.ToDateTime(dt.Rows[0]["NgaySinh"]);
+            string email = dt.Rows[0]["Email"].ToString();
+            string gioiTinh = dt.Rows[0]["GioiTinh"].ToString();
+
+            // Kiểm tra thông tin hợp lệ trước khi mở form
+            if (MaSV != null)
             {
                 // Tạo form ThongTinSinhVien với dữ liệu đã lấy
-                ThongTinSinhVien formThongTin = new ThongTinSinhVien(mssv, ho, tenlot, ten, diaChi, queQuan, ngaySinh, email, isMale);
+                ThongTinSinhVien formThongTin = new ThongTinSinhVien(MaSV, ho, tenLot, ten, diaChi, queQuan, ngaySinh, email, gioiTinh);
 
-                // Gọi hàm openChildForm để mở form trong pnl_Form
                 openChildForm(formThongTin);
             }
             else
             {
-                MessageBox.Show("Không tìm thấy thông tin sinh viên!", "Thông báo");
+                MessageBox.Show("Mssv không hợp lệ", "Thông báo");
             }
         }
 
         private void btn_xemDiem_Click(object sender, EventArgs e)
         {
             Form main = new Form();
-            DataTable dt = sinhVien.showDiemSinhVien(MaSV);
+            DataTable dt = sinhVien.getDiemSinhVien(MaSV);
 
             openChildForm(main);
 
