@@ -79,7 +79,7 @@ namespace QuanLyDiemCNTT.entity
 
 
         // show điểm
-        public DataTable getDiemSinhVien(string mssv)
+        public DataTable getDiemSinhVien(string mssv, int hocky)
         {
             string query = "proc_showDiemSV"; 
             db.openConnection();
