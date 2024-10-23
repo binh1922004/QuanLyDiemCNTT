@@ -153,8 +153,24 @@ namespace QuanLyDiemCNTT.entity
             }             
         }
 
-        public void dangKyMonHoc(string mssv)
+        public DataTable getDanhSachDKMH()
         {
+            string query = "proc_getListDKMH";
+
+            db.openConnection();
+
+            SqlCommand cmd = new SqlCommand(query, db.getConnection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            db.closeConnection();
+
+            return dt;
 
         }
 
