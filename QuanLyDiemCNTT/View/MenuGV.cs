@@ -37,5 +37,10 @@ namespace QuanLyDiemCNTT.view
             openChildForm(new ThongTinGiangVien());
 
         }
+
+        private void btn_MH_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DanhSachMonFromGV());
+        }
     }
 }

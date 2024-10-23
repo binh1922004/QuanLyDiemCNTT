@@ -38,7 +38,20 @@ namespace QuanLyDiemCNTT.entity
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            
+            db.closeConnection();
+            return dt;
+        }
+
+        public DataTable getDSMon(String maGV, int hocKy)
+        {
+            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM dbo.GetDistinctCoursesByLecturer(@MAGV, @HK)", db.getConnection);
+            sqlCmd.Parameters.Add(new SqlParameter("@MAGV", SqlDbType.VarChar)).Value = maGV;
+            sqlCmd.Parameters.Add(new SqlParameter("@HK", SqlDbType.Int)).Value = hocKy;
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            db.openConnection();
+
             return dt;
         }
     }

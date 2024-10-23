@@ -62,6 +62,7 @@
             this.btn_MH.TabIndex = 1;
             this.btn_MH.Text = "Danh sách môn";
             this.btn_MH.UseVisualStyleBackColor = true;
+            this.btn_MH.Click += new System.EventHandler(this.btn_MH_Click);
             // 
             // btn_Info
             // 
