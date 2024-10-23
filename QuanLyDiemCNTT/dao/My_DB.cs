@@ -11,10 +11,11 @@ namespace QuanLyDiemCNTT.dao
     internal class My_DB
     {
         SqlConnection conn = null;
+        String connString = @"Data Source=NHAATJNGUYEEN;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
 
         public My_DB() 
         {
-            conn = new SqlConnection(@"Data Source=NHAATJNGUYEEN;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True");
+            conn = new SqlConnection(connString);
         }
 
         public SqlConnection getConnection
