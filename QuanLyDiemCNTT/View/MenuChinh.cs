@@ -102,16 +102,11 @@ namespace QuanLyDiemCNTT.view
 
         private void btn_xemDiem_Click(object sender, EventArgs e)
         {
-            Form main = new Form();
-            DataTable dt = sinhVien.getDiemSinhVien(MaSV);
+            
 
-            openChildForm(main);
+            openChildForm(new BangDiemSV());
 
-            initDataGridView();
-
-            dgv.DataSource = dt;
-
-            main.Controls.Add(dgv);
+            
         }
 
         private void btn_dangKyMH_Click(object sender, EventArgs e)

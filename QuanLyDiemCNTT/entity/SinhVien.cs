@@ -81,11 +81,12 @@ namespace QuanLyDiemCNTT.entity
         // show điểm
         public DataTable getDiemSinhVien(string mssv, int hocky)
         {
-            string query = "proc_showDiemSV"; 
+            string query = "proc_getDiemSV"; 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mssv", mssv);
+            cmd.Parameters.AddWithValue("@hocky", hocky);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
