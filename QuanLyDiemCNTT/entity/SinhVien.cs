@@ -89,11 +89,11 @@ namespace QuanLyDiemCNTT.entity
 
         public (string, string, string, string, string, string, DateTime, string, bool) showInforSinhVien(string mssv)
         {
-            string query = "SELECT MaSV, Ho, TenLot, Ten, DiaChi, QueQuan, NgaySinh, Email, GioiTinh " +
-                           "FROM SinhVien WHERE MaSV = @mssv";
+            string query = "proc_showThongTinSV";
 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mssv", mssv);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -122,19 +122,10 @@ namespace QuanLyDiemCNTT.entity
         // show điểm
         public DataTable showDiemSinhVien(string mssv)
         {
-            string query = "SELECT " +
-                "hp.HocKy, " +
-                "hp.NamHoc, " +
-                "hp.MaHP, " +
-                "hp.TenHP, " +
-                "AVG(bd.DiemQT + bd.DiemKT) / 2 AS DiemTB " +  // Tính điểm trung bình
-                "FROM DangKy dk " +
-                "JOIN HocPhan hp ON dk.MaHP = hp.MaHP " +
-                "JOIN BangDiem bd ON dk.MaHP = bd.MaHP AND dk.MaSV = bd.MaSV " +
-                "WHERE dk.MaSV = @mssv " +
-                "GROUP BY hp.HocKy, hp.NamHoc, hp.MaHP, hp.TenHP"; 
+            string query = "proc_showDiemSV"; 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mssv", mssv);
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -156,13 +147,11 @@ namespace QuanLyDiemCNTT.entity
         public void ShowDetailedScores(string maSV, string maHP)
         {
             // truy vấn lấy điểm QT, KT và tên học phần
-            string query = "SELECT hp.TenHP, bd.DiemQT, bd.DiemKT " +
-                           "FROM BangDiem bd " +
-                           "JOIN HocPhan hp ON bd.MaHP = hp.MaHP " +
-                           "WHERE bd.MaSV = @MaSV AND bd.MaHP = @MaHP";
+            string query = "proc_showDiemChiTiet";
 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@MaSV", maSV);
             cmd.Parameters.AddWithValue("@MaHP", maHP);
 
@@ -189,22 +178,21 @@ namespace QuanLyDiemCNTT.entity
         // update thong tin sinh vien
         public bool updateInforSinhVien(SinhVien sv)
         {
-            string query = "UPDATE SinhVien SET Ho = @ho, TenLot = @tenLot, Ten = @ten, " +
-                        "DiaChi = @diaChi, QueQuan = @queQuan, NgaySinh = @ngaySinh, Email = @email, GioiTinh = @gioiTinh " +
-                        "WHERE MaSV = @mssv";
+            string query = "proc_editThongTinSV";
 
             db.openConnection();
             SqlCommand cmd = new SqlCommand(query, db.getConnection);
+            cmd.CommandType= CommandType.StoredProcedure;
 
-            cmd.Parameters.Add("@mssv", SqlDbType.VarChar).Value = sv.Mssv;
-            cmd.Parameters.Add("@ho", SqlDbType.NVarChar).Value = sv.Ho;
-            cmd.Parameters.Add("@tenLot", SqlDbType.NVarChar).Value = sv.TenLot;
-            cmd.Parameters.Add("@ten", SqlDbType.NVarChar).Value = sv.Ten;
-            cmd.Parameters.Add("@diaChi", SqlDbType.NVarChar).Value = sv.DiaChi;
-            cmd.Parameters.Add("@queQuan", SqlDbType.NVarChar).Value = sv.QueQuan;
-            cmd.Parameters.Add("@ngaySinh", SqlDbType.DateTime).Value = sv.NgaySinh;
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = sv.Email;
-            cmd.Parameters.Add("@gioiTinh", SqlDbType.NVarChar).Value = sv.GioiTinh;
+            cmd.Parameters.Add("@MaSV", SqlDbType.VarChar).Value = sv.Mssv;
+            cmd.Parameters.Add("@Ho", SqlDbType.NVarChar).Value = sv.Ho;
+            cmd.Parameters.Add("@TenLot", SqlDbType.NVarChar).Value = sv.TenLot;
+            cmd.Parameters.Add("@Ten", SqlDbType.NVarChar).Value = sv.Ten;
+            cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar).Value = sv.DiaChi;
+            cmd.Parameters.Add("@QueQuan", SqlDbType.NVarChar).Value = sv.QueQuan;
+            cmd.Parameters.Add("@NgaySinh", SqlDbType.DateTime).Value = sv.NgaySinh.Date;
+            cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = sv.Email;
+            cmd.Parameters.Add("@GioiTinh", SqlDbType.NVarChar).Value = sv.GioiTinh;
 
             if (cmd.ExecuteNonQuery() == 1)
             {
