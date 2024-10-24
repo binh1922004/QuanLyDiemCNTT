@@ -195,6 +195,27 @@ namespace QuanLyDiemCNTT.entity
             return dt;
         }
 
+        public DataTable getMonHocSVChuaDKy(string MS)
+        {
+            string query = "proc_getMHSVChuaDangKy";
+            
+
+            db.openConnection();
+
+            SqlCommand cmd = new SqlCommand(query, db.getConnection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@MaSV", MS);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            db.closeConnection();
+
+            return dt;
+        }
+
         public DataTable getDSHocPhan(string maMH, int hocKy = 2)
         {
             string query = "proc_getHP";

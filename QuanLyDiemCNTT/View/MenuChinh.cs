@@ -3,6 +3,7 @@ using QuanLyDiemCNTT.entity;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuanLyDiemCNTT.view
@@ -17,7 +18,7 @@ namespace QuanLyDiemCNTT.view
         private Form activeForm;
         private DataGridView dgv;
 
-        string MaSV = "SV001";
+        string MaSV = "SV003";
         public MenuChinh()
         {
             InitializeComponent();
@@ -112,6 +113,12 @@ namespace QuanLyDiemCNTT.view
         private void btn_dangKyMH_Click(object sender, EventArgs e)
         {
             openChildForm(new DanhSachDKMH());
+        }
+
+        private void btn_showDSDKYHP_Click(object sender, EventArgs e)
+        {
+            DanhSachHPDaDKy danhSachHPDaDKy = new DanhSachHPDaDKy();
+            danhSachHPDaDKy.Show();
         }
     }
 }

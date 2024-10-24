@@ -39,6 +39,7 @@
             this.dgv_DSHP.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv_DSHP.Location = new System.Drawing.Point(0, 86);
             this.dgv_DSHP.Name = "dgv_DSHP";
+            this.dgv_DSHP.ReadOnly = true;
             this.dgv_DSHP.RowHeadersWidth = 51;
             this.dgv_DSHP.RowTemplate.Height = 24;
             this.dgv_DSHP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -47,6 +48,7 @@
             // 
             // btn_DangKy
             // 
+            this.btn_DangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DangKy.Location = new System.Drawing.Point(767, 29);
             this.btn_DangKy.Name = "btn_DangKy";
             this.btn_DangKy.Size = new System.Drawing.Size(129, 51);
@@ -62,7 +64,9 @@
             this.ClientSize = new System.Drawing.Size(943, 577);
             this.Controls.Add(this.btn_DangKy);
             this.Controls.Add(this.dgv_DSHP);
+            this.MaximizeBox = false;
             this.Name = "DanhSachDKHP";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DanhSachDKHP";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSHP)).EndInit();
             this.ResumeLayout(false);

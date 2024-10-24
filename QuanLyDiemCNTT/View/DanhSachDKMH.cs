@@ -24,7 +24,7 @@ namespace QuanLyDiemCNTT.view
 
         void loadData()
         {
-            DataTable dt = sinhVien.getMonHoc();
+            DataTable dt = sinhVien.getMonHocSVChuaDKy("SV003");
 
             dgv_listDKMH.DataSource = dt;
 
@@ -40,6 +40,11 @@ namespace QuanLyDiemCNTT.view
             string maMon = dgv_listDKMH.Rows[index].Cells["MaMon"].Value.ToString();
             DanhSachDKHP danhSachDKHP = new DanhSachDKHP(maMon);
             danhSachDKHP.ShowDialog();
+        }
+
+        private void timer_reload_Tick(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

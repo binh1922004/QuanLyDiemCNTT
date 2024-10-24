@@ -12,8 +12,8 @@ namespace QuanLyDiemCNTT.dao
     {
         SqlConnection conn = null;
         //String connString = @"Data Source=NHAATJNGUYEEN;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
-        String connString = @"Data Source=binh0109\SQLEXPRESS;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
-
+        //String connString = @"Data Source=binh0109\SQLEXPRESS;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
+        String connString = @"Data Source=LAPTOP-VDFN1QRD;Initial Catalog=QLDiemSVKhoaCNTT;Integrated Security=True";
         public My_DB() 
         {
             conn = new SqlConnection(connString);
