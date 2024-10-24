@@ -117,6 +117,12 @@
     <Compile Include="view\MenuChinh.Designer.cs">
       <DependentUpon>MenuChinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\MenuChucNang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MenuChucNang.Designer.cs">
+      <DependentUpon>MenuChucNang.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuGV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\MenuChinh.resx">
       <DependentUpon>MenuChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\MenuChucNang.resx">
+      <DependentUpon>MenuChucNang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\MenuGV.resx">
       <DependentUpon>MenuGV.cs</DependentUpon>
