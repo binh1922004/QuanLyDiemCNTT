@@ -40,13 +40,13 @@
             this.dgv_DSHP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_DSHP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DSHP.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgv_DSHP.Location = new System.Drawing.Point(0, 91);
+            this.dgv_DSHP.Location = new System.Drawing.Point(0, 159);
             this.dgv_DSHP.Name = "dgv_DSHP";
             this.dgv_DSHP.ReadOnly = true;
             this.dgv_DSHP.RowHeadersWidth = 51;
             this.dgv_DSHP.RowTemplate.Height = 24;
             this.dgv_DSHP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_DSHP.Size = new System.Drawing.Size(1097, 494);
+            this.dgv_DSHP.Size = new System.Drawing.Size(1097, 426);
             this.dgv_DSHP.TabIndex = 1;
             this.dgv_DSHP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DSHP_CellClick);
             // 
@@ -57,7 +57,7 @@
             this.cb_semster.Items.AddRange(new object[] {
             "1",
             "2"});
-            this.cb_semster.Location = new System.Drawing.Point(949, 61);
+            this.cb_semster.Location = new System.Drawing.Point(85, 35);
             this.cb_semster.Name = "cb_semster";
             this.cb_semster.Size = new System.Drawing.Size(136, 24);
             this.cb_semster.TabIndex = 3;
@@ -67,7 +67,7 @@
             // 
             this.lb_semster.AutoSize = true;
             this.lb_semster.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_semster.Location = new System.Drawing.Point(866, 65);
+            this.lb_semster.Location = new System.Drawing.Point(2, 39);
             this.lb_semster.Name = "lb_semster";
             this.lb_semster.Size = new System.Drawing.Size(66, 20);
             this.lb_semster.TabIndex = 4;

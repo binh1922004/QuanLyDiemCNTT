@@ -19,8 +19,15 @@ namespace QuanLyDiemCNTT.view
         }
 
         string maMon;
+        int hocKy = 2;
         SinhVien sinhVien = new SinhVien();
-
+        public DanhSachDKHP(string maMon, int hocKy)
+        {
+            this.hocKy = hocKy;
+            this.maMon = maMon;
+            InitializeComponent();
+            loadData();
+        }
         public DanhSachDKHP(string maMon)
         {
             this.maMon = maMon;
@@ -34,21 +41,26 @@ namespace QuanLyDiemCNTT.view
         {
             try
             {
-                dgv_DSHP.DataSource = sinhVien.getDSHocPhan(maMon, 1);
+                dgv_DSHP.DataSource = sinhVien.getDSHocPhan(maMon, hocKy);
 
                 dgv_DSHP.Columns["SoLuongConLai"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 string maSV = "SV003";
+                int index = -1;
                 for (int i = 0; i < dgv_DSHP.Rows.Count - 1; i++)
                 {
                     string maHP = dgv_DSHP.Rows[i].Cells[0].Value.ToString();
                     if (sinhVien.checkDaDangKy(maHP, maSV))
                     {
                         haveReg = true;
+                        index = i;
                         oldmaHP = maHP;
                         break;
                     }
                 }
-
+                if (haveReg)
+                {
+                    dgv_DSHP.Rows.Remove(dgv_DSHP.Rows[index]);
+                }
             }
             catch (Exception ex)
             {
@@ -78,6 +90,7 @@ namespace QuanLyDiemCNTT.view
                     haveReg = true;
 
                     MessageBox.Show("Dang ky thanh cong");
+                    this.Close();
                 }
             }
             catch (Exception ex)

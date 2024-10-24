@@ -274,5 +274,7 @@ namespace QuanLyDiemCNTT.entity
             command.ExecuteNonQuery();
             db.closeConnection();
         }
+
+
     }
 }

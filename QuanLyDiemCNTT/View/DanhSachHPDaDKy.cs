@@ -1,4 +1,5 @@
 ﻿using QuanLyDiemCNTT.dao;
+using QuanLyDiemCNTT.entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,12 +58,28 @@ namespace QuanLyDiemCNTT.view
                     }
                 }
 
+                foreach (DataGridViewColumn column in dgv_DSHP.Columns)
+                {
+                    if (column.HeaderText == "Chỉnh sửa")
+                    {
+                        dgv_DSHP.Columns.Remove(column);
+                        break;
+                    }
+                }
+
                 // Thêm button xóa
                 DataGridViewButtonColumn historyButtonColumn = new DataGridViewButtonColumn();
                 historyButtonColumn.HeaderText = "Xóa";
                 historyButtonColumn.Text = "Xóa";
                 historyButtonColumn.UseColumnTextForButtonValue = true;
                 dgv_DSHP.Columns.Add(historyButtonColumn);
+
+                DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
+                editButtonColumn.HeaderText = "Chỉnh sửa";
+                editButtonColumn.Text = "Chỉnh sửa";
+                editButtonColumn.UseColumnTextForButtonValue = true;
+                dgv_DSHP.Columns.Add(editButtonColumn);
+
             }
             catch (Exception ex)
             {
@@ -101,6 +118,14 @@ namespace QuanLyDiemCNTT.view
                         DeleteHP(maHP);
                         RefreshDGV();
                     }
+                }
+                else if (column.HeaderText == "Chỉnh sửa")
+                {
+                    string maMH = dgv_DSHP.Rows[e.RowIndex].Cells["Mã Môn"].Value.ToString();
+                    DanhSachDKHP danhSachDKHP = new DanhSachDKHP(maMH, semester);
+                    danhSachDKHP.ShowDialog();
+                    RefreshDGV();
+
                 }
             }
         }

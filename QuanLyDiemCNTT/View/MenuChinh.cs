@@ -117,8 +117,7 @@ namespace QuanLyDiemCNTT.view
 
         private void btn_showDSDKYHP_Click(object sender, EventArgs e)
         {
-            DanhSachHPDaDKy danhSachHPDaDKy = new DanhSachHPDaDKy();
-            danhSachHPDaDKy.Show();
+            openChildForm(new DanhSachHPDaDKy());
         }
     }
 }
