@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="dao\My_DB.cs" />
     <Compile Include="entity\GiangVien.cs" />
+    <Compile Include="entity\NguoiDung.cs" />
     <Compile Include="entity\SinhVien.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,6 +106,12 @@
     <Compile Include="view\DanhSachSinhVienTheoLop.Designer.cs">
       <DependentUpon>DanhSachSinhVienTheoLop.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\MenuAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MenuAdmin.Designer.cs">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\MenuBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +148,12 @@
     <Compile Include="view\ThongTinSinhVien.Designer.cs">
       <DependentUpon>ThongTinSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\TrangDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\TrangDangNhap.Designer.cs">
+      <DependentUpon>TrangDangNhap.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -149,6 +162,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="view\BangDiemSV.resx">
       <DependentUpon>BangDiemSV.cs</DependentUpon>
@@ -192,6 +206,9 @@
     <EmbeddedResource Include="view\ThongTinSinhVien.resx">
       <DependentUpon>ThongTinSinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\TrangDangNhap.resx">
+      <DependentUpon>TrangDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -205,6 +222,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\SPKT.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

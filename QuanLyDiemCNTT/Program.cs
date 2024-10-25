@@ -17,7 +17,8 @@ namespace QuanLyDiemCNTT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new MenuChucNang());
+           //Application.Run(new MenuChucNang());
+            Application.Run(new TrangDangNhap());
         }
     }
 }
