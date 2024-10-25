@@ -13,12 +13,12 @@ namespace QuanLyDiemCNTT.view
 {
     public partial class BangDiemSV : Form
     {
-        string MaSV = "SV001";
+        string MaSV;
         SinhVien sinhVien = new SinhVien();
         public BangDiemSV()
         {
             InitializeComponent();
-
+            MaSV = Global.id;
             dgv_hk1.DataSource = sinhVien.getDiemSinhVien(MaSV, 1);
             dgv_hk2.DataSource = sinhVien.getDiemSinhVien(MaSV, 2);
         }

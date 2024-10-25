@@ -13,10 +13,7 @@ namespace QuanLyDiemCNTT.view
 {
     public partial class DanhSachDKHP : Form
     {
-        public DanhSachDKHP()
-        {
-            InitializeComponent();
-        }
+        string maSV = Global.id;
 
         string maMon;
         int hocKy = 2;
@@ -25,12 +22,14 @@ namespace QuanLyDiemCNTT.view
         {
             this.hocKy = hocKy;
             this.maMon = maMon;
+            maSV = Global.id;
             InitializeComponent();
             loadData();
         }
         public DanhSachDKHP(string maMon)
         {
             this.maMon = maMon;
+            maSV = Global.id;
             InitializeComponent();
             loadData();
         }
@@ -42,9 +41,7 @@ namespace QuanLyDiemCNTT.view
             try
             {
                 dgv_DSHP.DataSource = sinhVien.getDSHocPhan(maMon, hocKy);
-
                 dgv_DSHP.Columns["SoLuongConLai"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                string maSV = "SV003";
                 int index = -1;
                 for (int i = 0; i < dgv_DSHP.Rows.Count - 1; i++)
                 {
@@ -70,14 +67,13 @@ namespace QuanLyDiemCNTT.view
 
         private void btn_DangKy_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (dgv_DSHP.SelectedRows.Count > 0)
                 {
                     var row = dgv_DSHP.SelectedRows[0];
                     string maHP = row.Cells[0].Value.ToString();
-                    string maSV = "SV003";
                     if (haveReg)
                     {
                         sinhVien.doiHP(oldmaHP, maHP, maSV);

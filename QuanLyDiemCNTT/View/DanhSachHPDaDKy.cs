@@ -15,16 +15,17 @@ namespace QuanLyDiemCNTT.view
 {
     public partial class DanhSachHPDaDKy : Form
     {
-        string maSV = "SV003";
+        string maSV;
         My_DB db = new My_DB();
         int semester;
         public DanhSachHPDaDKy()
         {
             InitializeComponent();
+            maSV = Global.id;
             cb_semster.SelectedIndex = 0;
             //Xóa dòng cuối dgv
             dgv_DSHP.AllowUserToAddRows = false;
-            lb_DSHP.Text = lb_DSHP.Text +" của "+ maSV;
+            lb_DSHP.Text = lb_DSHP.Text + " của " + maSV;
         }
 
         private void DanhSachHPDaDKy_Load(object sender, EventArgs e)
@@ -32,10 +33,10 @@ namespace QuanLyDiemCNTT.view
             RefreshDGV();
         }
         public void RefreshDGV()
-        {         
+        {
             try
             {
-                dgv_DSHP.DataSource = null;            
+                dgv_DSHP.DataSource = null;
                 string query = "proc_getHPSVDKY";
                 db.openConnection();
                 SqlCommand cmd = new SqlCommand(query, db.getConnection);
@@ -94,7 +95,7 @@ namespace QuanLyDiemCNTT.view
         private void cb_semster_SelectedIndexChanged(object sender, EventArgs e)
         {
             int semesterIndex = cb_semster.SelectedIndex + 1;
-            if (semesterIndex > 0) 
+            if (semesterIndex > 0)
             {
                 //MessageBox.Show("HK " + semesterIndex, "HK", MessageBoxButtons.OK);
                 semester = semesterIndex;
@@ -136,7 +137,7 @@ namespace QuanLyDiemCNTT.view
             {
                 String query = "proc_deleteDangKy";
                 db.openConnection();
-                SqlCommand cmd = new SqlCommand(query,db.getConnection);
+                SqlCommand cmd = new SqlCommand(query, db.getConnection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@MaHP", mahp);
                 cmd.Parameters.AddWithValue("@MaSV", maSV);

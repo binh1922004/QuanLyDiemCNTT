@@ -18,11 +18,13 @@ namespace QuanLyDiemCNTT.view
         private Form activeForm;
         private DataGridView dgv;
 
-        string MaSV = "SV003";
+        string MaSV;
+        
         public MenuChinh()
         {
             InitializeComponent();
-            initDataGridView();      
+            MaSV = Global.id;
+            initDataGridView();
         }
 
         // Khởi tạo và cấu hình DataGridView

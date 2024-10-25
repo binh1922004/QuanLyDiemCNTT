@@ -16,7 +16,7 @@ namespace QuanLyDiemCNTT.view
         public ThongTinSinhVien()
         {
             SinhVien sinhVien = new SinhVien();
-            string maSV = "SV001";
+            string maSV = Global.id;
 
             InitializeComponent();
 

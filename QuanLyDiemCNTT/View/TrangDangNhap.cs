@@ -32,6 +32,7 @@ namespace QuanLyDiemCNTT.view
                 if (role == "student" && rbtn_Student.Checked)
                 {
                     MessageBox.Show("Sinh viên đăng nhập thành công!");
+                    Global.id = username;
                     OpenMenuChinh();
                 }
                 else if (role == "teacher" && rbtn_Teacher.Checked)
